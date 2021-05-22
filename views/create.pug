@@ -1,0 +1,30 @@
+extends layout
+
+block head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" type="text/css" href="/stylesheets/login.css")
+    title Login Page
+
+block content
+    #side-block
+        h3 Adamscode
+        // Triangle
+        h2 Get exclsuive access to adamscode
+        p Seamlessly harness centered portals and intuitive customer service. Holisticly mesh efficient.
+        // Triangle
+    .button-wrapper
+        .small-text Don't have an account?
+        .button-small Create Profile
+    form
+        label(for="email") Email 
+        input(type="text")
+
+        label(for="password" placeholder="email") Password 
+        input(type="text" placeholder="password")
+
+        input(type="submit" value="Login")
+    .small-text Forgot password?
+    .circle
+    

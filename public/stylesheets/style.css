@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    background-color: #FFFFF6;
+    font-family: Inter, sans-serif;
+}
+:root {
+    --text-color: red;
+    --bg: #FFFFF6;
+}
+
+/* GLobal CLass Values */
+.container {
+    display: block;
+    max-width: 650px;
+    margin: 0 auto;
+}
+.large-heading {
+    font-size: 40px;
+}
+.center-text {
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.text-block {
+    font-size: 20px;
+    display: inline;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: 60px;
+    text-transform: capitalize;
+    margin: 30px 0px;
+}
+h2 {
+    font-size: 32px;
+    font-weight: 800px;
+    margin: 20px 0px;
+    text-transform: capitalize;
+}
+h4 {
+    font-weight: 400;
+    font-size: 20px;
+    margin: 0;
+}
+p {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* Nav Section CSS */
+.nav {
+    margin-bottom: 90px;
+}
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+.nav ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+
+}
+.nav-wrapper .active-link {
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}
+.active-link > a {
+    color: var(--bg);
+    text-align: center;
+}
+.nav li {
+    display: inline;
+    padding-right: 20px;
+    font-weight: 800;
+    font-size: 18px;
+    transition: 250ms opacity;
+}
+.nav li:hover {
+    animation-delay: 300ms;
+    opacity: 60%;
+}
+
+.nav img {
+    max-width: 50px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-25px);
+}
+#block {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+}
+
+
+/* Heading blog post section */
+.heading-wrapper {
+    margin: 100px 0px;
+    transition: 250ms opacity;
+}
+.heading-wrapper:hover {
+    animation-delay: 300ms;
+    opacity: 60%;
+    cursor: pointer;
+}
+.first {
+    margin-bottom: 100px;
+}
+section.first img {
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+#new-mark {
+    display: inline;
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: black;
+    color: var(--bg);
+    padding: 7px;
+    font-weight: 800;
+    border-radius: 4px;
+    /* text-align:center; */
+}
+span.bold {
+    font-weight: 700;
+}
+
+/* Form Section For Posting Blogs */
+form.post {
+    display: flex;
+    flex-direction: column;
+}
+form.post > label {
+    padding: 8px 0px;
+    font-size: 24px;
+}
+form.post > input {
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+form.post textarea {
+    margin-bottom: 30px;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: normal;
+}
+.button {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    max-width: 30%;
+}
+.button.dark {
+    background-color :black;
+    color: white;
+}
+.long {
+    height: 300px;
+}
+
+
+
+

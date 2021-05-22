@@ -1,0 +1,30 @@
+extends layout 
+
+block head
+  link(rel='stylesheet' type='text/css' href='stylesheets/style.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='scripts/functions.js')
+  title Web Revived Questionair
+block content
+    section.first
+        container.container
+            img(src='images/alien.png')
+            .heading-wrapper
+            #new-mark new!
+            .text-block  March 19, 2021
+            h1#first-heading Test Change things nobody told you about being a web designer 
+            h4
+                | By 
+                span.bold  Adam Ghowiba 
+            p#first-content
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit erat a molestie sagittis. Cras dolor quam, efficitur faucibus rutrum egestas, scelerisque vitae dui.
+    section.post
+        container.container
+            each post in posts
+                .heading-wrapper(data-id=`${post.id}`)
+                    .text-block March 15, 2015
+                    h2= post.heading
+                    h4
+                        | By 
+                        span.bold= post.author
+                    p= post.content

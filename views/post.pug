@@ -1,0 +1,17 @@
+extends layout
+
+block head
+  link(rel='stylesheet' type='text/css' href='/stylesheets/style.css')
+  title Test Blog
+
+block content
+    section.first
+        container.container
+            .heading-wrapper
+            #new-mark new!
+            .text-block  March 19, 2021
+            h1#first-heading= post.heading
+            h4
+                | By 
+                span.bold= post.author
+            p#first-conten= post.content

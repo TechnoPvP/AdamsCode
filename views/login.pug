@@ -1,0 +1,47 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/login.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='/scripts/login.js')
+  title Document
+.left-block
+  .triangle.middle
+  h3  Adamscode 
+  h2
+    | Get exclusive access 
+    br
+    |  to adamscode
+  p
+    | Seamlessly harness centered portals and intuitive customer service. Holisticly mesh efficient.
+  .triangle.bottom
+.right-block
+  .button-wrapper
+    .small-text  Don&apos;t have an account? 
+    button.button  Create Profile 
+  #form-wrapper
+    form
+      label(for='email')
+        img(src='/images/padlock.svg')
+        input#email(type='text' name='email' placeholder='Email' data-error='Sorry that username is taken')
+        //- img(src='/images/mail.svg')
+      #invalid.small-text.error
+        | Pleae enter a valid email address like: 
+        br
+        |  you@example.com
+      label(for='password')
+        img(src='/images/mail.svg')
+        input#password(type='password' name='password' placeholder='Password')
+      #ps
+        .bubble-pointer
+        .text.bold  Password Strength: 
+        #ps-status.text  TOO SHORT 
+        #ps-bar-wrapper
+          #ps-bar
+        .text.pd-10
+          | Passwords should be 7 charcters long. Try an uncommon phrase or inside joke
+      input.button.large.mg-top(type='submit' value='Login')
+    .small-text  Forgot password? 
+  .triangle.right
