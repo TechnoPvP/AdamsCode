@@ -1,5 +1,6 @@
 const mysql = require("mysql");
-require('dotenv').config();
+
+if (process.NODE_ENV == undefined) require('dotenv').config();
 
 // TODO Better connection system
 
