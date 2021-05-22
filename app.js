@@ -13,7 +13,7 @@ var dbRouter = require('./routes/db');
 
 var app = express();
 
-require('dotenv').config();
+if (process.NODE_ENV == null) require('dotenv').config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
