@@ -1,10 +1,16 @@
 extends layout 
 
 block head
-  link(rel='stylesheet' type='text/css' href='stylesheets/style.css')
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
-  script(src='scripts/functions.js')
-  title Web Revived Questionair
+    link(rel='stylesheet' type='text/css' href='stylesheets/style.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    // Google Analytics
+    script.
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-XXXXX-Y', 'auto');
+      ga('send', 'pageview');
+    script(async src='https://www.google-analytics.com/analytics.js')
+    // End Google Analytics
+    title Web Revived Questionair
 block content
     section.first
         container.container
