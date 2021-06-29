@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="first">
+        <container class="container"><img src="images/alien.png" />
+            <div class="heading-wrapper"></div>
+            <div id="new-mark">new!</div>
+            <div class="text-block"> March 19, 2021</div>
+            <h1 id="first-heading">Test Change things nobody told you about being a web designer </h1>
+            <h4>
+                By <span class="bold"> Adam Ghowiba </span></h4>
+            <p id="first-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit erat a
+                molestie sagittis. Cras dolor quam, efficitur faucibus rutrum egestas, scelerisque vitae dui.</p>
+        </container>
+    </section>
+    <section class="post">
+
+        <!--    id: 5,
+        author: 'Sandip Mishra',
+        heading: 'Sandiop',
+        content: 'Testing' -->
+
+        <container class="container">
+            <% posts.forEach(post=> { %>
+                <div class="heading-wrapper">
+                    <div class="text-block">April 12, 2019</div>
+                    <h2>
+                        <%= post.heading %>
+                    </h2>
+                    <h4> By <span class="bold">
+                            <%= post.author %>
+                        </span> </h4>
+                    <p>
+                        <%= post.content %>
+                    </p>
+                </div>
+                <% }) %>
+
+
+        </container>
+    </section>
+
+</body>
+
+</html>

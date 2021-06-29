@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/scripts/login.js"></script>
+    <title>Document</title>
+</head>
+<div class="left-block">
+    <div class="triangle middle"></div>
+    <h3> Adamscode </h3>
+    <h2>Get exclusive access <br> to adamscode</h2>
+    <p>Seamlessly harness centered portals and intuitive customer service. Holisticly mesh efficient.</p>
+    <div class="triangle bottom"></div>
+</div>
+<div class="right-block">
+    <div class="button-wrapper">
+        <div class="small-text"> Don&apos;t have an account? </div><a class="button" href="login/register"> Create
+            Profile </a>
+    </div>
+    <div id="form-wrapper">
+        <form action="/login" method="POST">
+            <label for="email"><img src="/images/mail.svg">
+                <input id="email" type="text" name="email" placeholder="Email"
+                    data-error="Sorry that username is taken">
+            </label>
+            <div class="small-text error" id="invalid">Pleae enter a valid email address like: <br> you@example.com
+            </div>
+            <label for="password"><img src="/images/padlock.svg">
+                <input id="password" type="password" name="password" placeholder="Password">
+            </label>
+            <input class="button large mg-top" type="submit" value="Login">
+        </form>
+        <div class="small-text"> Forgot password? </div>
+    </div>
+    <div class="triangle right"></div>
+</div>

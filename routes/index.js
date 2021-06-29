@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
 
 	db.getAllPost(20).then((result) => {
 		res.render('index', { posts: result });
+		console.log(result);
 	});
 });
 
