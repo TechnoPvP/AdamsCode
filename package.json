@@ -21,7 +21,7 @@
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "npm": "^7.19.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.2",
     "puppeteer": "^10.0.0"
   },
   "devDependencies": {
