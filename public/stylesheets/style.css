@@ -109,17 +109,20 @@ nav {
 	height: 45px;
 	background-color: black;
 	border-radius: 100%;
-	margin-left: 15px;
 }
 /* Navbar Dropdown */
 .profile-dropdown {
 	background-color: #221e1f;
+	/* Explict height must be set to avoid animation breaking during spamming. */
+	height: 145px;
 	position: absolute;
 	display: none;
 	right: 0;
 }
 .profile-image-wrapper {
+	/* border-radius: 100%; */
 	position: relative;
+	margin-left: 15px;
 }
 .profile-dropdown {
 	padding: 20px 0px;
@@ -130,6 +133,7 @@ nav {
 	color: white;
 	padding: 12.5px 0px;
 	text-transform: capitalize;
+	list-style-type: none;
 }
 .dropdown__item-active {
 	border-left: 2.5px solid rgb(15, 222, 230);
@@ -146,8 +150,6 @@ nav {
 }
 .heading-wrapper:hover {
 	animation-delay: 300ms;
-	opacity: 60%;
-	cursor: pointer;
 }
 .first {
 	margin-bottom: 100px;

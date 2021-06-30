@@ -9,11 +9,16 @@ router.get('/', (req, res) => {
 });
 
 router.get('/blog/:slug', async (req, res) => {
-	const { slug } = req.params;
-	const result = await Post.findBySlug(slug);
-	if (!result) return res.status(400).send('No blog post found with slug ' + slug);
+	try {
+		const { slug } = req.params;
+		const result = await Post.findBySlug(slug);
 
-	res.render('post', { result });
+		if (!result) return res.status(400).send('No blog post found with slug ' + slug);
+
+		res.render('post', { result, user: req.session.user });
+	} catch (e) {
+		console.error(e);
+	}
 });
 
 router.post('/create', async (req, res) => {

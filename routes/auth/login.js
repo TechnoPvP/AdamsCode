@@ -30,9 +30,10 @@ router.post('/', async (req, res) => {
 
 	// TODO Create session
 	req.session.user = {
-		id    : user._id,
-		email : user.email,
-		role  : 'default'
+		id       : user._id,
+		email    : user.email,
+		username : user.username,
+		role     : 'default'
 	};
 	console.log('Session has been created for user ' + user.email);
 	res.status(200).redirect('/');
