@@ -8,17 +8,9 @@ require('dotenv').config();
 
 router.get('/', (req, res) => {
 	// Check if they're already logged in.
-	if (req.session.user) return res.status(200).redirect('/user.html');
+	if (req.session.user) return res.status(200).redirect('/');
 
 	res.render('user/login');
-});
-
-router.get('/pro', auth, (req, res) => {
-	if (req.session.user) {
-		res.send('Auth in this bitch');
-	} else {
-		res.send('Not authrized please leave.');
-	}
 });
 
 router.post('/', async (req, res) => {
@@ -43,7 +35,7 @@ router.post('/', async (req, res) => {
 		role  : 'default'
 	};
 	console.log('Session has been created for user ' + user.email);
-	res.status(200).redirect('/user.html');
+	res.status(200).redirect('/');
 });
 
 module.exports = router;

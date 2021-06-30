@@ -16,42 +16,45 @@
         author: 'Sandip Mishra',
         heading: 'Sandiop',
         content: 'Testing' -->
-    <%- include('./partials/navbar.ejs') %>
+    <% if (locals.user) { %>
+        <%- include('./partials/navbar.ejs', {user: user} ) %>
+            <% } else {%>
+                <%- include('./partials/navbar.ejs' ) %>
+                    <% } %>
 
-        <container class="container">
-            <% const index=0; %>
-                <% posts.reverse().forEach((post, index)=> { %>
-                    <% if (index==0) { %>
-                        <div class="heading-wrapper" data-id=<%=post.slug %> >
-                            <img class="title-image" src="images/alien.png" />
-                            <div id="new-mark">new!</div>
-                            <div class="text-block"> March 19, 2021</div>
-                            <h1 id="first-heading">
-                                <%= post.heading %>
-                            </h1>
-                            <h4> By <span class="bold">
-                                    <%= post.author %>
-                                </span></h4>
-                            <p id="first-content">
-                                <%=post.content%>
-                            </p>
-                        </div>
-                        <% } else { %>
-                            <div class="heading-wrapper" data-id=<%=post.slug %>>
-                                <div class="text-block">April 12, 2019</div>
-                                <h2>
-                                    <%= post.heading %>
-                                </h2>
-                                <h4> By <span class="bold">
-                                        <%= post.author %>
-                                    </span> </h4>
-                                <p>
-                                    <%= post.content %>
-                                </p>
-                                <% } %>
-                                    <% }) %>
-                            </div>
-        </container>
+                        <container class="container">
+                            <% posts.reverse().forEach((post, index)=> { %>
+                                <% if (index==0) { %>
+                                    <div class="heading-wrapper" data-id=<%=post.slug %> >
+                                        <img class="title-image" src="images/alien.png" />
+                                        <div id="new-mark">new!</div>
+                                        <div class="text-block"> March 19, 2021</div>
+                                        <h1 id="first-heading">
+                                            <%= post.heading %>
+                                        </h1>
+                                        <h4> By <span class="bold">
+                                                <%= post.author %>
+                                            </span></h4>
+                                        <p id="first-content">
+                                            <%=post.content%>
+                                        </p>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="heading-wrapper" data-id=<%=post.slug %>>
+                                            <div class="text-block">April 12, 2019</div>
+                                            <h2>
+                                                <%= post.heading %>
+                                            </h2>
+                                            <h4> By <span class="bold">
+                                                    <%= post.author %>
+                                                </span> </h4>
+                                            <p>
+                                                <%= post.content %>
+                                            </p>
+                                            <% } %>
+                                                <% }) %>
+                                        </div>
+                        </container>
 
 </body>
 
