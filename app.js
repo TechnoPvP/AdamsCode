@@ -7,7 +7,7 @@ const log = require('./logger/logger');
 const { db } = require('./utils/mUtil');
 const session = require('express-session');
 const mongoSession = require('connect-mongodb-session')(session);
-const { MongoDBStore } = require('connect-mongodb-session');
+const flash = require('express-flash');
 require('dotenv').config();
 
 // Authentcation Routers
@@ -29,6 +29,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
