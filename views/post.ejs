@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='/stylesheets/style.css' />
+    <title>Post </title>
+</head>
+
+<body>
+    <%- include ('./partials/navbar.ejs') %>
+        <section class="first">
+            <div class="container">
+                <div class="heading-wrapper">
+                    <div id="new-mark">new</div>
+                    <div class="text-block">March 1, 2019</div>
+                    <h1 id="first-heading">
+                        <%= result.heading %>
+                    </h1>
+                    <h4>By <span class="bold">
+                            <%= result.author %>
+                        </span></h4>
+                    <p>
+                        <%= result.content %>
+                    </p>
+                </div>
+            </div>
+        </section>
+</body>
+
+</html>

@@ -1,47 +1,33 @@
 const express = require('express');
 const router = express.Router();
-
+const db = require('../../utils/postUtil');
+const Post = require('../../model/Post');
 router.use(express.urlencoded({ extended: false }));
 
 router.get('/', (req, res) => {
 	res.send('Reached DB END point');
 });
 
-router.get('/blog/:blogID', (req, res) => {
-	db
-		.getPost(req.params.blogID)
-		.then((result) => {
-			res.render('post', { post: result[0] });
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(400).redirect('/');
-		});
+router.get('/blog/:slug', async (req, res) => {
+	const { slug } = req.params;
+	const result = await Post.findBySlug(slug);
+	if (!result) return res.status(400).send('No blog post found with slug ' + slug);
+
+	res.render('post', { result });
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
 	console.log('Blog Created');
-
-	delete req.body.submit;
+	const { heading, content, author } = req.body;
+	const slug = heading.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 
 	// TODO Make client side
-	db.addPostBody(req.body);
-	res.redirect('/');
-});
+	Post.create({ heading: heading, date: Date.now(), content: content, author: author, slug: slug }, (err) => {
+		if (err) return res.status(400).send('Post cannot be created.' + err);
 
-router.get('/:id', (req, res) => {
-	res.status(200);
-	res.send('Looking up data for ' + req.params.id);
-	db
-		.getPost(req.params.id)
-		.then((result) => {
-			console.log(result[0].author);
-			console.log(result[0].heading);
-			console.log(result[0].content);
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+		console.log(`[Info] A new post has been created by ${author}`);
+		res.redirect('/');
+	});
 });
 
 module.exports = router;
