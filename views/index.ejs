@@ -16,42 +16,29 @@
         author: 'Sandip Mishra',
         heading: 'Sandiop',
         content: 'Testing' -->
-    <%- include('./partials/navbar.ejs', {user: user} ) %>
+    <%- include('./partials/navbar.ejs', {user: locals.user ? user : null } ) %>
 
         <container class="container">
             <% posts.reverse().forEach((post, index)=> { %>
-                <% if (index==0) { %>
-                    <div class="heading-wrapper first" data-id=<%=post.slug %> >
-                        <a href="#">
+                <div class="heading-wrapper <%= index == 0 ? 'first' : '' %> " data-id=<%=post.slug %> >
+                    <a href="#">
+                        <% if (index==0) { %>
                             <img class="title-image" src="images/alien.png" />
                             <div id="new-mark">new!</div>
-                            <div class="text-block"> March 19, 2021</div>
-                            <h1 id="first-heading">
-                                <%= post.heading %>
-                            </h1>
-                            <h4> By <span class="bold">
-                                    <%= post.author %>
-                                </span></h4>
-                            <p id="first-content">
-                                <%=post.content%>
-                            </p>
-                        </a>
-                    </div>
-                    <% } else { %>
-                        <div class="heading-wrapper" data-id=<%=post.slug %>>
-                            <div class="text-block">April 12, 2019</div>
-                            <h2>
-                                <%= post.heading %>
-                            </h2>
-                            <h4> By <span class="bold">
-                                    <%= post.author %>
-                                </span> </h4>
-                            <p>
-                                <%= post.content %>
-                            </p>
                             <% } %>
-                                <% }) %>
-                        </div>
+                                <div class="text-block"> March 19, 2021</div>
+                                <h2 class="<%= index == 0 ? 'title-heading' : null %> ">
+                                    <%= post.heading %>
+                                </h2>
+                                <h4> By <span class="bold">
+                                        <%= post.author %>
+                                    </span></h4>
+                                <p id="first-content">
+                                    <%=post.content%>
+                                </p>
+                    </a>
+                </div>
+                <% }); %>
         </container>
 
 </body>
