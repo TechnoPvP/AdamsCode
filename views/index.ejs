@@ -20,8 +20,8 @@
 
         <container class="container">
             <% posts.reverse().forEach((post, index)=> { %>
-                <div class="heading-wrapper <%= index == 0 ? 'first' : '' %> " data-id=<%=post.slug %> >
-                    <a href="#">
+                <div class="heading-wrapper <%= index == 0 ? 'first' : '' %>">
+                    <a class="post-link" href="/db/blog/<%=post.slug %>">
                         <% if (index==0) { %>
                             <img class="title-image" src="images/alien.png" />
                             <div id="new-mark">new!</div>

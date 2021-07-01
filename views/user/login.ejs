@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/scripts/login.js"></script>
+    <script src="/scripts/register.js"></script>
     <title>Document</title>
 </head>
 <div class="left-block">
@@ -22,17 +22,20 @@
             Profile </a>
     </div>
     <div id="form-wrapper">
-        <form action="/login" method="POST">
-            <label for="email"><img src="/images/mail.svg">
-                <input id="email" type="text" name="email" placeholder="Email"
-                    data-error="Sorry that username is taken">
-            </label>
-            <div class="small-text error" id="invalid">Pleae enter a valid email address like: <br> you@example.com
-            </div>
-            <label for="password"><img src="/images/padlock.svg">
-                <input id="password" type="password" name="password" placeholder="Password">
-            </label>
-            <input class="button large mg-top" type="submit" value="Login">
+        <form id="login" action="/login" method="POST">
+            <% if (locals.error) { %>
+                <div class="small-text flash">
+                    Error: <%= error %>
+                </div>
+                <% } %>
+                    <label for="email"><img src="/images/mail.svg">
+                        <input id="email" type="text" name="email" placeholder="Email"
+                            data-error="Sorry that username is taken">
+                    </label>
+                    <label for="password"><img src="/images/padlock.svg">
+                        <input id="password" type="password" name="password" placeholder="Password">
+                    </label>
+                    <input class="button large mg-top" type="submit" value="Login">
         </form>
         <div class="small-text"> Forgot password? </div>
     </div>

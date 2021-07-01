@@ -1,14 +1,4 @@
 $(document).ready(function() {
-	/** Function for clickable blog posts. That take you to their endpoint. 
-	 * via 'data-id' which is a slug.
-	 */
-	// $('.heading-wrapper').click(function() {
-	// 	blogID = $(this).attr('data-id');
-	// 	if (blogID) {
-	// 		window.location.href = `db/blog/${blogID}`;
-	// 	}
-	// });
-
 	// Profile icon hover function
 	$('.profile-image-wrapper').hover(
 		function() {
@@ -22,20 +12,4 @@ $(document).ready(function() {
 			});
 		}
 	);
-
-	// Profile Hover
-	// $('.heading-wrapper').hover(
-	// 	function() {
-	// 		blogID = $(this).attr('data-id');
-	// 		if (blogID) {
-	// 			$(this).css({ opacity: '68%' });
-	// 		}
-	// 	},
-	// 	function() {
-	// 		blogID = $(this).attr('data-id');
-	// 		if (blogID) {
-	// 			$(this).css({ opacity: '100%' });
-	// 		}
-	// 	}
-	// );
 });

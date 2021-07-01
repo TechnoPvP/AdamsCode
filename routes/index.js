@@ -17,10 +17,8 @@ router.get('/', async (req, res, next) => {
 
 		if (userSession) {
 			const user = await User.findById(userSession.id);
-			console.log('test');
 			return res.render('index', { posts: allPost, user: user });
 		} else {
-			console.log('no session');
 			return res.render('index', { posts: allPost });
 		}
 	} catch (err) {

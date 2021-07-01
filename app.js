@@ -7,7 +7,7 @@ const log = require('./logger/logger');
 const { db } = require('./utils/mUtil');
 const session = require('express-session');
 const mongoSession = require('connect-mongodb-session')(session);
-const flash = require('express-flash');
+const flash = require('connect-flash');
 require('dotenv').config();
 
 // Authentcation Routers
@@ -29,7 +29,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -40,8 +39,10 @@ db.connect((err) => {
 
 // Setup mongo session store.
 var store = new mongoSession({
-	uri        : process.env.DB_URI,
-	collection : 'session'
+	uri                : process.env.DB_URI,
+	collection         : 'session',
+	autoRemove         : 'interval',
+	autoRemoveInterval : 10
 });
 // Catch any errors if they occure while creating session store.
 store.on('error', function(error) {
@@ -49,14 +50,21 @@ store.on('error', function(error) {
 });
 
 // Create session data
-const sessionData = {
-	secret            : 'adawdawdadawdwa',
-	resave            : false,
-	saveUninitialized : false,
-	store             : store,
-	cookie            : { maxAge: 3600000 * 2 }
-};
-app.use(session(sessionData));
+app.use(function(req, res, done) {
+	var isHealthcheck = req.url.indexOf('healthcheck') > -1;
+	const sessionData = {
+		secret            : 'adawdawdadawdwa',
+		resave            : false,
+		saveUninitialized : false,
+		store             : isHealthcheck || store,
+		cookie            : { maxAge: 3600000 * 2 }
+	};
+	app.use(session(sessionData)(req, res, done));
+});
+
+app.use(flash());
+// Express Flash Middlewear
+// app.use(function(req, res, next) {});
 
 // Register Routes
 app.use('/', indexRouter);

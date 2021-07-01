@@ -1,4 +1,5 @@
-const form = document.querySelector('form', function(e) {
-	console.log('test');
-	e.preventDefault();
+$(document).ready(function() {
+	// $('#login').on('submit', function(e) {
+	// 	e.preventDefault();
+	// });
 });

@@ -112,6 +112,10 @@ body {
 	display: none;
 	padding: 0;
 }
+.small-text.flash {
+	color: red;
+	padding: 0;
+}
 .button {
 	display: inline;
 	position: relative;

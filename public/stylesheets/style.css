@@ -54,6 +54,15 @@ p {
 	font-weight: 400;
 }
 
+/* Post Related */
+.post-link {
+	display: block;
+	height: 100%;
+	transition: 250ms opacity;
+}
+.post-link:hover {
+	opacity: 0.6;
+}
 /* Nav Section CSS */
 nav {
 	margin: var(--section-padding) 0;
@@ -147,10 +156,6 @@ nav {
 /* Heading blog post section */
 .heading-wrapper {
 	margin: 100px 0px;
-	transition: 250ms opacity;
-}
-.heading-wrapper:hover {
-	animation-delay: 300ms;
 }
 .first {
 	margin-bottom: 100px;
