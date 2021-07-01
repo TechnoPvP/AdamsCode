@@ -54,17 +54,15 @@ store.on('error', function(error) {
 });
 
 // Create session data
-app.use(function(req, res, done) {
-	var isHealthcheck = req.url.indexOf('healthcheck') > -1;
-	const sessionData = {
-		secret            : 'adawdawdadawdwa',
-		resave            : false,
-		saveUninitialized : false,
-		store             : isHealthcheck || store,
-		cookie            : { maxAge: 3600000 * 2 }
-	};
-	app.use(session(sessionData)(req, res, done));
-});
+// var isHealthcheck = req.url.indexOf('healthcheck') > -1;
+const sessionData = {
+	secret            : 'adawdawdadawdwa',
+	resave            : false,
+	saveUninitialized : false,
+	store             : store,
+	cookie            : { maxAge: 3600000 * 2 }
+};
+app.use(session(sessionData));
 
 app.use(flash());
 // Express Flash Middlewear
