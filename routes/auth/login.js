@@ -10,6 +10,7 @@ require('dotenv').config();
 router.get('/', (req, res) => {
 	// Check if they're already logged in.
 	if (req.session.user) return res.status(200).redirect('/');
+
 	if (req.flash('error')) {
 		res.render('user/login', { error: req.flash('error') });
 	} else {

@@ -32,6 +32,10 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/ping', (req, res) => {
+	res.status(200).send('Response Checked.');
+});
+
 // Connectes to the database, breaks if it can't connect.
 db.connect((err) => {
 	if (err) throw new Error('Stopping right here');
