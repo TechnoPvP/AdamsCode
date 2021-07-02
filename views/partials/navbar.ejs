@@ -5,10 +5,11 @@
                 <a href="/">Home</a>
             </li>
             <li><a href="">Contact</a></li>
-            <li><a href="create.html">Create</a></li>
             <% if (!locals.user) { %>
                 <li><a href="/login">Login</a></li>
-                <% } %>
+                <% } else {%>
+                    <li><a href="/create">Create</a></li>
+                    <% } %>
         </ul>
         <img class="logo" src="/images/cardiogram.png" alt="icon" />
         <div class="profile-wrapper">

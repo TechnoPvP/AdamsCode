@@ -14,6 +14,7 @@ require('dotenv').config();
 const logoutRouter = require('./routes/auth/logout');
 const loginRouter = require('./routes/auth/login');
 const registerRouter = require('./routes/auth/register');
+const createRouter = require('./routes/user/create');
 
 const indexRouter = require('./routes/index');
 const dbRouter = require('./routes/api/db');
@@ -81,6 +82,7 @@ app.use('/login', loginRouter);
 app.use('/db', dbRouter);
 app.use('/logout', logoutRouter);
 app.use('/register', registerRouter);
+app.use('/create', createRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
