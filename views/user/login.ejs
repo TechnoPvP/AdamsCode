@@ -23,9 +23,9 @@
     </div>
     <div id="form-wrapper">
         <form id="login" action="/login" method="POST">
-            <% if (locals.error) { %>
+            <% if (locals.flash) { %>
                 <div class="small-text flash">
-                    Error: <%= error %>
+                    <%= locals.flash.error %>
                 </div>
                 <% } %>
                     <label for="email"><img src="/images/mail.svg">

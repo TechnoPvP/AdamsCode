@@ -36,6 +36,10 @@ app.get('/ping', (req, res) => {
 	res.status(200).send('Response Checked.');
 });
 
+app.post('/ping', (req, res) => {
+	res.status(200).send('Response Checked.');
+});
+
 // Connectes to the database, breaks if it can't connect.
 db.connect((err) => {
 	if (err) throw new Error('Stopping right here');
@@ -54,7 +58,6 @@ store.on('error', function(error) {
 });
 
 // Create session data
-// var isHealthcheck = req.url.indexOf('healthcheck') > -1;
 const sessionData = {
 	secret            : 'adawdawdadawdwa',
 	resave            : false,
@@ -63,10 +66,14 @@ const sessionData = {
 	cookie            : { maxAge: 3600000 * 2 }
 };
 app.use(session(sessionData));
-
 app.use(flash());
-// Express Flash Middlewear
-// app.use(function(req, res, next) {});
+
+// Custom Flash Middlewear
+// app.use(function(req, res, next) {
+// 	res.locals.flash = req.session.sessionFlash
+// 	delete req.session.flash
+// 	next()
+// });
 
 // Register Routes
 app.use('/', indexRouter);
