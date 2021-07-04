@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
+const currentDate = () => {
+	const date = new Date();
+
+	return date.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
+};
+
 const postSchema = new mongoose.Schema({
 	heading  : {
 		type     : String,
@@ -17,7 +23,14 @@ const postSchema = new mongoose.Schema({
 		type     : String,
 		required : true
 	},
-	comments : [ { body: String, date: Date } ],
+	comments : [
+		{
+			username: String,
+			body: String,
+			likes: [ { username: String } ],
+			date: { type: String, default: currentDate }
+		}
+	],
 	slug     : {
 		type   : String,
 		unique : true,

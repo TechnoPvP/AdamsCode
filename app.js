@@ -8,7 +8,6 @@ const { db } = require('./utils/mUtil');
 const session = require('express-session');
 const mongoSession = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
-require('dotenv').config();
 
 // Authentcation Routers
 const logoutRouter = require('./routes/auth/logout');
@@ -17,9 +16,20 @@ const registerRouter = require('./routes/auth/register');
 const createRouter = require('./routes/user/create');
 
 const indexRouter = require('./routes/index');
-const dbRouter = require('./routes/api/db');
+const apiRouter = require('./routes/api/db');
+// var livereload = require('livereload');
+// var connectLiveReload = require('connect-livereload');
+require('dotenv').config();
+
+// const liveReloadServer = livereload.createServer();
+// liveReloadServer.server.once('connection', () => {
+// 	setTimeout(() => {
+// 		liveReloadServer.refresh('/');
+// 	}, 1);
+// });
 
 var app = express();
+// app.use(connectLiveReload());
 
 if (process.NODE_ENV == null) require('dotenv').config();
 
@@ -69,17 +79,10 @@ const sessionData = {
 app.use(session(sessionData));
 app.use(flash());
 
-// Custom Flash Middlewear
-// app.use(function(req, res, next) {
-// 	res.locals.flash = req.session.sessionFlash
-// 	delete req.session.flash
-// 	next()
-// });
-
 // Register Routes
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-app.use('/db', dbRouter);
+app.use('/api', apiRouter);
 app.use('/logout', logoutRouter);
 app.use('/register', registerRouter);
 app.use('/create', createRouter);

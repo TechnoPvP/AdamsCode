@@ -21,5 +21,27 @@ const loginValidation = (data) => {
 	return schema.validate(data);
 };
 
-module.exports.registerValidation = registerValidation;
-module.exports.loginValidation = loginValidation;
+const commentValidation = (data) => {
+	const schema = Joi.object({
+		username : Joi.string().required(),
+		body     : Joi.string().min(3).required(),
+		likes    : Joi.array()
+	});
+
+	return schema.validate(data);
+};
+
+const test = (data) => {
+	const schema = Joi.object({
+		username : Joi.string().required()
+	});
+
+	return schema.validate(data);
+};
+
+module.exports = {
+	commentValidation,
+	registerValidation,
+	loginValidation,
+	test
+};

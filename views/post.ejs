@@ -26,10 +26,49 @@
                     <h4>By <span class="bold">
                             <%= result.author %>
                         </span></h4>
-                    <p>
+                    <p class="post__p">
                         <%= result.content %>
                     </p>
                 </div>
+                <div class="text text-light">
+                    <%= comments.length %> replies to "<%= result.heading %>"
+                </div>
+                <div class="comment">
+                    <img class="comment__profile_icon" src="/images/profile_icon.jpg" />
+                    <form action="<%= result.slug %>/comment" method="POST">
+                        <textarea name="body" class="comment__input" placeholder="Add to the discussion..."
+                            rows="3"></textarea>
+                        <input id="comment__submit" type="submit" value="Submit" />
+                    </form>
+                </div>
+
+                <div class="container container--comments">
+                    <% if (locals.comments) { %>
+                        <% comments.forEach(comment=> { %>
+                            <div class="comment__wrapper">
+
+                                <img class="comment__profile_icon" src="/images/profile_icon.jpg" />
+                                <div class="comment__card">
+                                    <div>
+                                        <div class="comment__username">
+                                            <%= comment.username %>
+                                        </div>
+                                        <div class="comment__date">
+                                            <%= comment.date %>
+                                        </div>
+                                    </div>
+                                    <p class="comment__body">
+                                        <!-- Possibly unnessary way to remove extra white space form input. -->
+                                        <%= comment.body %>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <% }) %>
+
+                                <% } %>
+                </div>
+
             </div>
         </section>
 </body>

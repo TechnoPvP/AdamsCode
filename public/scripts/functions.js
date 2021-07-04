@@ -12,4 +12,18 @@ $(document).ready(function() {
 			});
 		}
 	);
+
+	// Expand comment section input when clicked on
+	$('.comment__input').on('click', function(e) {
+		classList = $(this).attr('class');
+
+		// Check if it's already opened.
+		if (!classList.includes('comment__input--open')) {
+			$(this).addClass('comment__input--open');
+
+			// Show submit button.
+			$('#comment__submit').show();
+			console.log(classList);
+		}
+	});
 });

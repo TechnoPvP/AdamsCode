@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+* {
+	box-sizing: border-box;
+}
 body {
 	background-color: #fffff6;
 	font-family: Inter, sans-serif;
@@ -213,4 +216,88 @@ form.post textarea {
 }
 .long {
 	height: 300px;
+}
+
+/* Comment Related CSS */
+
+/* Comment Form */
+.comment__profile_icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	margin-right: 14px;
+}
+.comment > form {
+	width: 100%;
+	background: var(--bg);
+}
+
+.comment__input,
+.comment__card {
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+	border-radius: 7px;
+	background-color: #f8f8ee;
+	font-size: 18px;
+	outline: none;
+	border: 2px solid #221e1f;
+	/* transition: height .25s ease-in-out; */
+}
+.text-light {
+	color: #8d8d8d;
+	margin-bottom: 10px;
+}
+.comment {
+	display: flex;
+	width: 100%;
+}
+/* User Comments */
+.comment__username,
+.comment__date {
+	display: inline;
+	width: auto;
+}
+.comment__username {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.comment__date {
+	font-size: 13px;
+	color: #8d8d8d;
+}
+.comment__card {
+	padding: 22px 0px 22px 18px;
+	width: 100%;
+}
+.comment__wrapper {
+	display: flex;
+	margin: 40px 0px;
+}
+.comment__body {
+	margin: 10px 0px 0px 0px;
+	font-size: 14px;
+}
+#comment__submit {
+	width: 118px;
+	padding: 10px 0px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 7px 0px;
+	background-color: black;
+	border: none;
+	display: none;
+	border-radius: 7px;
+}
+
+/* Hover for comment input to reveal submit */
+.comment__input--open {
+	height: 200px;
+}
+
+/* Post Paragraph */
+.post__p {
+	white-space: pre-line;
 }
