@@ -59,22 +59,12 @@ router.post('/update', upload.single('avatar'), async (req, res) => {
 		req.session.user.id,
 		{
 			$set : req.file
-				? {
-						username     : username.trim(),
-						email        : email.trim(),
-						name         : name.trim(),
-						profileImage : '/uploads/' + req.file.filename
-					}
-				: {
-						username : username.trim(),
-						email    : email.trim(),
-						name     : name.trim()
-					}
+				? { username, email, name, profileImage: '/uploads/' + req.file.filename }
+				: { username, email, name }
 		},
 		{ useFindAndModify: false }
 	);
 
-	console.log(user);
 	res.redirect('/user/profile/settings');
 });
 

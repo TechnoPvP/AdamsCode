@@ -16,10 +16,11 @@
         <div class="container container--wide">
 
             <div class="card card__edit">
-                <img class="card__profile_icon" src="/images/profile_icon.jpg">
-                <form class="form" action="/user/profile/update" method="POST">
+                <img class="card__profile_icon" src="<%= user.profileImage %>">
+                <form class="form" action="/user/profile/update" method="POST" enctype="multipart/form-data">
                     <label class="form__label" for="name">Name</label>
-                    <input class="form__input" name="name" value="<%=user.name%>" type="text">
+                    <input class="form__input" name="name" value="<%=user.name ? user.name : 'No name avialable' %>"
+                        type="text">
 
                     <label class="form__label" for="Email">Email</label>
                     <input class="form__input" name="email" value="<%=user.email %>" type="text">
