@@ -38,9 +38,6 @@ router.get('/:slug', async (req, res) => {
 			user = null;
 		}
 
-		const userQuery = await User.findById(req.session.user.id);
-		// console.log(userQuery);
-
 		if (!post.comments) {
 			res.render('post', user ? { post, user } : { post });
 			return;
