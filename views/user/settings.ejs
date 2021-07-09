@@ -17,12 +17,12 @@
 
             <div class="card card__edit">
                 <img class="card__profile_icon" src="/images/profile_icon.jpg">
-                <form class="form" action="/user/profile/update" method="POST" enctype="multipart/form-data">
+                <form class="form" action="/user/profile/update" method="POST">
                     <label class="form__label" for="name">Name</label>
                     <input class="form__input" name="name" value="<%=user.name%>" type="text">
 
                     <label class="form__label" for="Email">Email</label>
-                    <input class="form__input" name="email" value="<%=user.email %> " type="text">
+                    <input class="form__input" name="email" value="<%=user.email %>" type="text">
 
                     <label class="form__label" for="Username">Username</label>
                     <input class="form__input" name="username" value="<%=user.username%>" type="text">

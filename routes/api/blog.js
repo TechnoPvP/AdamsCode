@@ -42,6 +42,7 @@ router.get('/:slug', async (req, res) => {
 			res.render('post', user ? { post, user } : { post });
 			return;
 		}
+
 		let comments = post.comments.map(async (comment) => {
 			//  Needs an object but providing it a string
 

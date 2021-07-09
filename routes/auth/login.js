@@ -27,6 +27,8 @@ router.post('/', async (req, res) => {
 		const { email, password } = req.body;
 
 		const user = await User.findOne({ email: email });
+		console.log(email);
+		console.log(user);
 		if (!user) {
 			req.flash('error', `Invalid username please try again`);
 			return res.render('user/login', { flash: req.flash() });

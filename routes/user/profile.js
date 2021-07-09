@@ -58,9 +58,18 @@ router.post('/update', upload.single('avatar'), async (req, res) => {
 	const user = await User.findByIdAndUpdate(
 		req.session.user.id,
 		{
-			$set: req.file
-				? { username, email, name, profileImage: '/uploads/' + req.file.filename }
-				: { username, email, name }
+			$set : req.file
+				? {
+						username     : username.trim(),
+						email        : email.trim(),
+						name         : name.trim(),
+						profileImage : '/uploads/' + req.file.filename
+					}
+				: {
+						username : username.trim(),
+						email    : email.trim(),
+						name     : name.trim()
+					}
 		},
 		{ useFindAndModify: false }
 	);
