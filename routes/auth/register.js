@@ -27,9 +27,9 @@ router.post('/', async (req, res) => {
 	try {
 		const saveUser = await user.save();
 		res.redirect('/login');
-		console.log('Just saved a new user');
+		console.log('Just saved a new user ' + saveUser);
 	} catch (err) {
-		res.status(400).send(err);
+		res.status(400).send('Something went wrong ' + err);
 	}
 });
 

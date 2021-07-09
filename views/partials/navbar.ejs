@@ -8,7 +8,7 @@
             <% if (!locals.user) { %>
                 <li><a href="/login">Login</a></li>
                 <% } else {%>
-                    <li><a href="/create">Create</a></li>
+                    <li><a href="/user/create">Create</a></li>
                     <% } %>
         </ul>
         <img class="logo" src="/images/cardiogram.png" alt="icon" />
@@ -18,11 +18,12 @@
                     <%= user.username %>
                 </h3>
                 <div class="profile-image-wrapper">
-                    <img id="profile-image" src="/images/profile_icon.jpg" />
+                    <img id="profile-image" src="<%= user.profileImage%>" />
+                    <!-- <img id="profile-image" src="/uploads/WR_Post.jpg" /> -->
                     <div class="profile-dropdown">
                         <div class="triangle"></div>
                         <ul class="dropdown">
-                            <li class='dropdown__item dropdown__item-active'><a href="">my profile</a></li>
+                            <li class='dropdown__item dropdown__item-active'><a href="/user/profile">my profile</a></li>
                             <li class='dropdown__item'><a href="">notifcations</a></li>
                             <li class='dropdown__item'><a href="/logout">logout</a></li>
                         </ul>

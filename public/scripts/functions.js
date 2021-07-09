@@ -3,7 +3,6 @@ $(document).ready(function() {
 	$('.profile-image-wrapper').hover(
 		function() {
 			$('.profile-dropdown').stop().slideDown({ duration: 350, queue: false });
-			console.log('Hello');
 		},
 		function() {
 			$('.profile-dropdown').stop().slideUp({

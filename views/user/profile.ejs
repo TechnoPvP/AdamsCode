@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/scripts/functions.js"></script>
+    <title>User Profile</title>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs', {user: user}) %>
+
+        <div class="container container-wide">
+
+            <div class="menu">
+                <div class="card card__profile">
+                    <div class="card__profile_data">
+                        <h3 class="card__username">
+                            @<%= user.username%>
+                        </h3>
+                        <div class="card__text card__text-orange">CEO at Web Revived LLC</div>
+                        <p class="card__text">"The only thing difficult in programming is naming things and async
+                            functions"
+                        </p>
+                    </div>
+                    <div class="card__profile_stats">
+                        <div class="stat">
+                            <img class="stat__icon" src="/images/doc-search-two.png">
+                            <span class="start__text"> <span class="orange">3</span> posts published</span>
+                        </div>
+                        <div class="stat">
+                            <img class="stat__icon" src="/images/comment.png">
+                            <span class="start__text"> <span class="orange">3</span> comment written</span>
+                        </div>
+                        <div class="stat">
+                            <img class="stat__icon" src="/images/doc-search-two.png">
+                            <span class="start__text"> <span class="orange">3</span> tags followed</span>
+                        </div>
+                    </div>
+                    <img class="card__profile_icon" src="<%=user.profileImage %>">
+                    <button class="card__button card__button-right"><a href="/user/profile/settings">Edit Profile
+                        </a></button>
+                </div>
+                <div class="card card__comments">
+                    <h3 class="card__heading"> Recent comments</h3>
+                    <div class="card__comment">
+                        <h3 class="card__comment_title">Why I switched from normal CSS to Tailwind CSS</h3>
+                        <div class="card__text card__text-small"> Thanks for the great work! Love to see it</div>
+                        <span class="card_text card__text-date">Jul 4</span>
+                    </div>
+                    <div class="card__comment">
+                        <h3 class="card__comment_title">Why I switched from normal CSS to Tailwind CSS</h3>
+                        <div class="card__text card__text-small"> Thanks for the great work! Love to see it</div>
+                        <span class="card_text card__text-date">Jul 4</span>
+                    </div>
+                    <div class="card__comment">
+                        <h3 class="card__comment_title">Why I switched from normal CSS to Tailwind CSS</h3>
+                        <div class="card__text card__text-small"> Thanks for the great work! Love to see it</div>
+                        <span class="card_text card__text-date">Jul 4</span>
+                    </div>
+                    <div class="card__comment">
+                        <h3 class="card__comment_title">Why I switched from normal CSS to Tailwind CSS</h3>
+                        <div class="card__text card__text-small"> Thanks for the great work! Love to see it</div>
+                        <span class="card_text card__text-date">Jul 4</span>
+                    </div>
+                    <div class="card__comment">
+                        <h3 class="card__comment_title">Why I switched from normal CSS to Tailwind CSS</h3>
+                        <div class="card__text card__text-small"> Thanks for the great work! Love to see it</div>
+                        <span class="card_text card__text-date">Jul 4</span>
+                    </div>
+                </div>
+                <div class="card card__notifcations">
+                    <h3 class="card__heading"> Recent comments</h3>
+                    <div class="alert">
+                        <img class="alert__profile_icon" src="/images/profile_icon.jpg">
+                        <div class="alert__flex">
+                            <div class="alert__title">@adamscode commented on your post</div>
+                            <div class="alert__body">Thanks for the great work Love to see It!</div>
+                            <span class="card_-text card__text-date"> Jul 4 </span>
+                        </div>
+                    </div>
+
+                    <div class="alert">
+                        <img class="alert__profile_icon" src="/images/profile_icon.jpg">
+                        <div class="alert__flex">
+                            <div class="alert__title">@adamscode commented on your post</div>
+                            <div class="alert__body">Thanks for the great work Love to see It!</div>
+                            <span class="card_-text card__text-date"> Jul 4 </span>
+                        </div>
+                    </div>
+
+                    <div class="alert">
+                        <img class="alert__profile_icon" src="/images/profile_icon.jpg">
+                        <div class="alert__flex">
+                            <div class="alert__title">@adamscode commented on your post</div>
+                            <div class="alert__body">Thanks for the great work Love to see It!</div>
+                            <span class="card_-text card__text-date"> Jul 4 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

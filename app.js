@@ -13,20 +13,11 @@ const flash = require('connect-flash');
 const logoutRouter = require('./routes/auth/logout');
 const loginRouter = require('./routes/auth/login');
 const registerRouter = require('./routes/auth/register');
-const createRouter = require('./routes/user/create');
+const userRouter = require('./routes/user');
 
 const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api/db');
-// var livereload = require('livereload');
-// var connectLiveReload = require('connect-livereload');
+const apiRouter = require('./routes/api');
 require('dotenv').config();
-
-// const liveReloadServer = livereload.createServer();
-// liveReloadServer.server.once('connection', () => {
-// 	setTimeout(() => {
-// 		liveReloadServer.refresh('/');
-// 	}, 1);
-// });
 
 var app = express();
 // app.use(connectLiveReload());
@@ -41,8 +32,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+//  Set the public & uploads path to static
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// TODO Clean up app.js
 app.get('/ping', (req, res) => {
 	res.status(200).send('Response Checked.');
 });
@@ -85,7 +79,7 @@ app.use('/login', loginRouter);
 app.use('/api', apiRouter);
 app.use('/logout', logoutRouter);
 app.use('/register', registerRouter);
-app.use('/create', createRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-* {
+*,
+html {
 	box-sizing: border-box;
 }
 body {
@@ -10,6 +11,7 @@ body {
 :root {
 	--text-color: red;
 	--bg: #fffff6;
+	--accent: #fa7124;
 	--section-padding: 30px;
 }
 
@@ -18,6 +20,9 @@ body {
 	display: block;
 	max-width: 650px;
 	margin: 0 auto;
+}
+.container-wide {
+	max-width: 1140px;
 }
 .large-heading {
 	font-size: 40px;
@@ -69,6 +74,7 @@ p {
 /* Nav Section CSS */
 nav {
 	margin: var(--section-padding) 0;
+	margin-bottom: 7em;
 }
 .nav-wrapper {
 	display: flex;
@@ -127,20 +133,18 @@ nav {
 .profile-dropdown {
 	background-color: #221e1f;
 	/* Explict height must be set to avoid animation breaking during spamming. */
-	height: 145px;
+	height: auto;
 	position: absolute;
 	display: none;
 	right: 0;
+	padding: 20px 0px;
+	padding-right: 50px;
+	border-radius: 5px;
 }
 .profile-image-wrapper {
 	/* border-radius: 100%; */
 	position: relative;
 	margin-left: 15px;
-}
-.profile-dropdown {
-	padding: 20px 0px;
-	padding-right: 50px;
-	border-radius: 5px;
 }
 .dropdown__item {
 	color: white;
@@ -300,4 +304,202 @@ form.post textarea {
 /* Post Paragraph */
 .post__p {
 	white-space: pre-line;
+}
+
+/* User profile style */
+.menu {
+	justify-content: center;
+	display: grid;
+	grid-template-areas: ". notifcations" ". notifcations";
+	grid-template-columns: 1.7fr 1fr;
+	grid-template-rows: 400px 300px;
+	color: white;
+	grid-gap: 13px;
+}
+.card {
+	width: 100%;
+	height: 100%;
+	color: white;
+	border-bottom: 25px solid var(--accent);
+	background-color: #02070e;
+}
+.card__profile {
+	/* background-color: orange; */
+	padding: 80px 30px;
+	position: relative;
+}
+.card__profile_icon {
+	display: block;
+	position: absolute;
+	top: -70px;
+	right: 0;
+	left: 0;
+	height: 140px;
+	width: 140px;
+	border-radius: 100%;
+	margin: 0 auto;
+	border: 10px solid var(--bg);
+}
+.card__button {
+	background-color: var(--accent);
+	outline: none;
+	border: none;
+	padding: 10px 26px;
+	color: white;
+	font-weight: bold;
+	border-radius: 6px;
+}
+.card__button-right {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	color: red;
+}
+.card__button a {
+	color: white;
+}
+.card__profile_data {
+	text-align: center;
+	/* border: 1px solid white; */
+	max-width: 65%;
+	display: block;
+	margin: 0 auto;
+}
+.card__text {
+	font-size: 18px;
+	margin: 0;
+}
+.card__text-small {
+	font-size: 14px;
+	display: inline;
+}
+.card__text-date {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.658);
+	display: inline;
+	margin: 0 8px;
+}
+.card__text-orange {
+	color: var(--accent);
+	margin: 10px 0px;
+}
+.card__username {
+	margin: 0px 0px;
+	font-size: 25px;
+	/* line-height: 2.5em; */
+}
+.card__profile_stats {
+	position: absolute;
+	display: flex;
+	bottom: 0;
+	left: 0;
+	height: 100px;
+	width: 100%;
+	border-top: 1px solid white;
+	justify-content: space-around;
+	padding: 0px 20px;
+}
+
+/* Stat information */
+.stat {
+	margin: 0px 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.stat__icon {
+	max-width: 21px;
+	margin-right: 10px;
+}
+.stat__text {
+	color: white;
+	font-size: 15px;
+	vertical-align: center;
+}
+span.orange {
+	color: var(--accent);
+}
+
+/* Comment Card */
+.card__comments {
+	padding: 10px 45px;
+	position: relative;
+	overflow-y: scroll;
+}
+.card__comment {
+	margin-bottom: 23px;
+}
+.card__heading {
+	color: var(--accent);
+}
+.card__comment_title {
+	font-size: 16px;
+	margin: 0;
+	line-height: 1.4em;
+}
+
+/* Notifcations Card */
+.card__notifcations {
+	/* background-color: tomato; */
+	grid-area: notifcations;
+	padding: 0px 20px;
+}
+
+.alert {
+	display: flex;
+	margin-bottom: 23px;
+}
+.alert__title {
+	font-size: 18px;
+}
+.alert__body {
+	font-size: 12px;
+	display: inline;
+}
+.alert__profile_icon {
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	margin-right: 10px;
+}
+
+/* Edit CSS */
+.form {
+	display: flex;
+	flex-flow: column;
+	max-width: 50%;
+	margin: 0 auto;
+}
+.form__label {
+	color: rgb(255, 255, 255);
+	line-height: 2em;
+}
+.form__input {
+	padding: 10px;
+	margin-bottom: 23px;
+	border-radius: 8px;
+}
+.card__edit {
+	padding: 80px 30px;
+	position: relative;
+}
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(46, 46, 46, 0.171);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(0, 0, 0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #fa9053f6;
 }

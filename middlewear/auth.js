@@ -3,10 +3,10 @@
  * @author Adam Ghowiba 
 */
 
-const isAuth = (req, res, next) => {
+const auth = (req, res, next) => {
 	if (!req.session.user) return res.redirect('/login');
 
 	next();
 };
 
-module.exports.auth = isAuth;
+module.exports.auth = auth;

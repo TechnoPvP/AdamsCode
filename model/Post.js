@@ -25,10 +25,10 @@ const postSchema = new mongoose.Schema({
 	},
 	comments : [
 		{
-			username: String,
-			body: String,
-			likes: [ { username: String } ],
-			date: { type: String, default: currentDate }
+			userId : mongoose.Schema.Types.ObjectId,
+			body   : String,
+			likes  : [ { username: String } ],
+			date   : { type: String, default: currentDate }
 		}
 	],
 	slug     : {
@@ -39,7 +39,7 @@ const postSchema = new mongoose.Schema({
 });
 
 postSchema.statics.findBySlug = function(slug) {
-	return this.findOne({ slug: slug });
+	return this.findOne({ slug: slug }).lean();
 };
 
 module.exports = mongoose.model('post', postSchema);

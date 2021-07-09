@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/scripts/functions.js"></script>
+    <title>User Profile</title>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs', {user: user}) %>
+        <div class="container container--wide">
+
+            <div class="card card__edit">
+                <img class="card__profile_icon" src="/images/profile_icon.jpg">
+                <form class="form" action="/user/profile/update" method="POST" enctype="multipart/form-data">
+                    <label class="form__label" for="name">Name</label>
+                    <input class="form__input" name="name" value="<%=user.name%>" type="text">
+
+                    <label class="form__label" for="Email">Email</label>
+                    <input class="form__input" name="email" value="<%=user.email %> " type="text">
+
+                    <label class="form__label" for="Username">Username</label>
+                    <input class="form__input" name="username" value="<%=user.username%>" type="text">
+
+                    <label class="form__label" for="Profile Picture">Profile Picture</label>
+                    <input class="form__input" name="avatar" value="Adam Ghowiba" type="file">
+
+                    <input type="submit" class="card__button"><a href="/user/profile">Back To Profile </a></input>
+
+                </form>
+                <button class="card__button card__button-right"><a href="/user/profile">Back To Profile </a></button>
+            </div>
+
+
+
+        </div>
+</body>
+
+</html>

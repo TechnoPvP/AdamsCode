@@ -3,14 +3,12 @@ const router = express.Router();
 const db = require('../../utils/postUtil');
 const { auth } = require('../../middlewear/auth');
 const Post = require('../../model/Post');
+const multer = require('multer');
+const upload = multer({ dest: '/uploads/' });
 const { commentValidation, test } = require('../../middlewear/validation');
 router.use(express.urlencoded({ extended: false }));
 
-router.get('/', (req, res) => {
-	res.send('Reached DB END point');
-});
-
-router.get('/blog/:slug', async (req, res) => {
+router.get('/:slug', async (req, res) => {
 	try {
 		const { slug } = req.params;
 		const result = await Post.findBySlug(slug);
@@ -23,7 +21,7 @@ router.get('/blog/:slug', async (req, res) => {
 	}
 });
 
-router.post('/blog/create', auth, async (req, res) => {
+router.post('/create', auth, async (req, res) => {
 	console.log('Blog Created');
 	const { heading, content, author } = req.body;
 	const slug = heading.replace(/[^a-z0-9]/gi, '-').toLowerCase();
@@ -39,17 +37,12 @@ router.post('/blog/create', auth, async (req, res) => {
 	});
 });
 
-router.get('/blog/:slug/:comment', (req, res) => {
+router.get('/:slug/:comment', (req, res) => {
 	res.send('Reached blog endpoint for ' + req.params.slug + ' with ' + req.params.comment);
 });
 
 // Post a comment
-router.post('/blog/:slug/comment', auth, async (req, res) => {
-	/**
-	 * TODO
-	 * - Check if theyre authrized.
-	 */
-
+router.post('/:slug/comment', auth, async (req, res) => {
 	// Check if request is empty
 	if (!req.body) return req.flash('error', 'Comment body was empty, please enter a comment.');
 

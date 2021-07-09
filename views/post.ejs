@@ -9,68 +9,77 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/scripts/functions.js"></script>
     <title>
-        <%= result.heading %>
+        <%= post.heading %>
     </title>
 </head>
 
 <body>
-    <%- include ('./partials/navbar.ejs', {user: user}) %>
-        <section class="first">
-            <div class="container">
-                <div class="heading-wrapper">
-                    <div id="new-mark">new</div>
-                    <div class="text-block">March 1, 2019</div>
-                    <h1 id="first-heading">
-                        <%= result.heading %>
-                    </h1>
-                    <h4>By <span class="bold">
-                            <%= result.author %>
-                        </span></h4>
-                    <p class="post__p">
-                        <%= result.content %>
-                    </p>
-                </div>
-                <div class="text text-light">
-                    <%= comments.length %> replies to "<%= result.heading %>"
-                </div>
-                <div class="comment">
-                    <img class="comment__profile_icon" src="/images/profile_icon.jpg" />
-                    <form action="<%= result.slug %>/comment" method="POST">
+    <header>
+        <% if (locals.user) { %>
+            <%- include ('./partials/navbar.ejs', {user: user}) %>
+                <% }else { %>
+                    <%- include ('./partials/navbar.ejs', {}) %>
+                        <% } %>
+    </header>
+    <section class="first">
+        <div class="container">
+            <div class="heading-wrapper">
+                <div id="new-mark">new</div>
+                <div class="text-block">March 1, 2019</div>
+                <h1 id="first-heading">
+                    <%= post.heading %>
+                </h1>
+                <h4>By <span class="bold">
+                        <%= post.author %>
+                    </span></h4>
+                <p class="post__p">
+                    <%= post.content %>
+                </p>
+            </div>
+            <div class="text text-light">
+                <%= post.comments ? post.comments.length : '0' %> replies to "<%= post.heading %>"
+            </div>
+
+            <div class="comment">
+                <% if (locals.user) { %>
+                    <img class="comment__profile_icon" src="<%=user.profileImage %>" />
+                    <form action="<%= post.slug %>/comment" method="POST">
                         <textarea name="body" class="comment__input" placeholder="Add to the discussion..."
                             rows="3"></textarea>
                         <input id="comment__submit" type="submit" value="Submit" />
                     </form>
-                </div>
-
-                <div class="container container--comments">
-                    <% if (locals.comments) { %>
-                        <% comments.forEach(comment=> { %>
-                            <div class="comment__wrapper">
-
-                                <img class="comment__profile_icon" src="/images/profile_icon.jpg" />
-                                <div class="comment__card">
-                                    <div>
-                                        <div class="comment__username">
-                                            <%= comment.username %>
-                                        </div>
-                                        <div class="comment__date">
-                                            <%= comment.date %>
-                                        </div>
-                                    </div>
-                                    <p class="comment__body">
-                                        <!-- Possibly unnessary way to remove extra white space form input. -->
-                                        <%= comment.body %>
-                                    </p>
-                                </div>
-
-                            </div>
-                            <% }) %>
-
-                                <% } %>
-                </div>
-
+                    <% } %>
             </div>
-        </section>
+
+            <div class="container container--comments">
+                <% if (locals.comments) { %>
+                    <% comments.forEach(comment=> { %>
+                        <div class="comment__wrapper">
+
+                            <img class="comment__profile_icon" src="<%=comment.profileImage%>" />
+                            <div class=" comment__card">
+                                <div>
+                                    <div class="comment__username">
+                                        <%= comment.username %>
+                                    </div>
+                                    <div class="comment__date">
+                                        <%= comment.date %>
+                                    </div>
+                                </div>
+                                <p class="comment__body">
+                                    <!-- Possibly unnessary way to remove extra white space form input. -->
+                                    <%= comment.body %>
+                                </p>
+                            </div>
+
+                        </div>
+                        <% }) %>
+
+                            <% } %>
+            </div>
+
+        </div>
+    </section>
 </body>
 
 </html>
