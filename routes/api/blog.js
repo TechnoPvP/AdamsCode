@@ -9,7 +9,7 @@ const { UnavailableForLegalReasons } = require('http-errors');
 router.post('/create', auth, async (req, res) => {
 	console.log('Blog Created');
 	const { heading, content, author } = req.body;
-	const slug = heading.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+	const slug = heading.trim().replace(/[^a-z0-9]/gi, '-').toLowerCase();
 
 	if ((!heading, !content, !author)) return res.status(400).send('Invalid not working.');
 
@@ -31,7 +31,6 @@ router.get('/:slug', async (req, res) => {
 
 		const userId = req.session.user && req.session.user.id;
 		let user;
-
 		if (userId) {
 			user = await User.findById(userId);
 		} else {
@@ -42,12 +41,10 @@ router.get('/:slug', async (req, res) => {
 			res.render('post', user ? { post, user } : { post });
 			return;
 		}
-
 		let comments = post.comments.map(async (comment) => {
 			//  Needs an object but providing it a string
 
 			const userQuery = await User.findById(comment.userId).exec();
-			console.log(userQuery.profileImage);
 			return {
 				...comment,
 				username     : userQuery.username,

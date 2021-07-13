@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const multer = require('multer');
 const User = require('../../model/User');
+const Post = require('../../model/Post');
 const path = require('path');
 const { loginValidation } = require('../../middlewear/validation');
 const { auth } = require('../../middlewear/auth');
@@ -33,7 +34,20 @@ const upload = multer({
 
 router.get('/', auth, async (req, res) => {
 	const user = await User.findById(req.session.user.id);
-	return res.render('user/profile', { user });
+	const posts = await Post.find({ author: user.username }, 'heading comments').lean();
+	const post = await Post.find({}, 'comments');
+	// const commentAmount = comments.comments.filter((e) => e.userId == req.session.user.id);
+	let test = post.forEach((e) => {
+		const fil = e.comments.filter((elem) => (elem.uderId = '60da45e0e25d735030396713'));
+		return fil;
+	});
+	console.log(test);
+	const stats = {
+		published : posts.length,
+		comments  : 1,
+		tags      : 0
+	};
+	return res.render('user/profile', { user, stats });
 });
 router.get('/settings', auth, async (req, res) => {
 	const user = await User.findById(req.session.user.id);
