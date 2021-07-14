@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // async..await is not allowed in global scope, must use a wrapper
 const transporter = nodemailer.createTransport({
@@ -6,8 +7,8 @@ const transporter = nodemailer.createTransport({
 	port   : 587,
 	secure : false, // true for 465, false for other ports
 	auth   : {
-		user : 'adamware99@hotmail.com', // generated ethereal user
-		pass : 'Donewithit9958!' // generated ethereal password
+		user : process.env.EMAIL, // generated ethereal user
+		pass : process.env.EMAIL_PASSWORD // generated ethereal password
 	}
 });
 
