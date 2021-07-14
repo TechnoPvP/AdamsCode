@@ -12,6 +12,7 @@ router.post('/solar', (req, res) => {
 	});
 
 	email().sendMail('adam@webrevived.com', 'New Form Submission', htmlString);
+	res.redirect('http://invirogen.com/solar.html');
 });
 
 module.exports = router;
