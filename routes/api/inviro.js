@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const email = require('../utils/EmailUtil');
+const email = require('../../utils/EmailUtil');
 
 router.post('/solar', (req, res) => {
 	if (typeof req.body.data != 'string' || !req.body) return res.send('Please submit a correct value');
