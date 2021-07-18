@@ -8,6 +8,7 @@ const { db } = require('./utils/mUtil');
 const session = require('express-session');
 const mongoSession = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
+const cors = require('cors');
 
 // Authentcation Routers
 const logoutRouter = require('./routes/auth/logout');
@@ -72,6 +73,14 @@ const sessionData = {
 };
 app.use(session(sessionData));
 app.use(flash());
+
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	next();
+});
+// app.use(cors({ origin: 'http://127.0.0.1:5500', credentials: true }));
+// app.options('*', cors());
 
 // Register Routes
 app.use('/', indexRouter);
