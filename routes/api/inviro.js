@@ -1,18 +1,18 @@
 const router = require('express').Router();
 const email = require('../../utils/EmailUtil');
 
-router.post('/solar', async (req, res) => {
-	if (typeof req.body.data != 'string' || !req.body) return res.send('Please submit a correct value');
+router.post('/solar', (req, res) => {
+	if (!req.body) return res.send(400, "Submission can't be empty");
 
-	const data = JSON.parse(req.body.data);
+	const data = req.body;
 	console.log(data);
 	let htmlString = '';
 
 	for (const key in data) {
 		htmlString = htmlString.concat(`<b> ${key} </b>: ${data[key]} <br/> `);
 	}
-	console.log(htmlString);
 	email().sendMail('adam@webrevived.com', 'New Form Submission', htmlString);
+	res.json({ status: 200, message: 'Success' });
 });
 
 router.post('/test', (req, res) => {
