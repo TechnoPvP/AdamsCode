@@ -76,7 +76,10 @@ app.use(flash());
 
 app.use(function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin'
+	);
 	next();
 });
 // app.use(cors({ origin: 'http://127.0.0.1:5500', credentials: true }));
