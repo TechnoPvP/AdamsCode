@@ -13,7 +13,6 @@ router.post('/solar', async (req, res) => {
 	}
 	console.log(htmlString);
 	email().sendMail('adam@webrevived.com', 'New Form Submission', htmlString);
-	res.redirect('http://invirogen.com/solar.html');
 });
 
 router.post('/test', (req, res) => {
