@@ -11,7 +11,7 @@ router.post('/solar', (req, res) => {
 	for (const key in data) {
 		htmlString = htmlString.concat(`<b> ${key} </b>: ${data[key]} <br/> `);
 	}
-	email().sendMail('adam@webrevived.com', 'New Form Submission', htmlString);
+	email().sendMail('adam@webrevived.com, technogaming99@gmail.com', 'New Form Submission', htmlString);
 	res.json({ status: 200, message: 'Success' });
 });
 
