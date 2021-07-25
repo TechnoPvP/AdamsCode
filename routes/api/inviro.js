@@ -23,7 +23,7 @@ router.post('/solar', uploadUtils.upload.single('bill_photo'), (req, res) => {
 
 	sendSolarMail(
 		{
-			to      : 'adam@webrevived.com',
+			to      : 'adam@webrevived.com, solar@invirogen.com',
 			subject : 'New Solar Quote Request',
 			data    : req.body,
 			file    : req.file ? req.file : null
