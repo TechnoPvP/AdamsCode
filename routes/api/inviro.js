@@ -19,26 +19,25 @@ const { resolveNs } = require('dns');
 // 	res.json({ status: 200, message: 'Success' });
 // });
 
-router.post('/solar', (req, res) => {
+router.post('/solar', uploadUtils.upload.single('bill_photo'), (req, res) => {
 	const error = false;
-	const upload = uploadUtils.upload.single('bill_photo');
 
-	upload(req, res, function(err) {
-		sendSolarMail(
-			{
-				to      : 'adam@webrevived.com',
-				subject : 'New Solar Quote Request',
-				data    : req.body,
-				file    : req.file ? req.file : null
-			},
-			(err) => {
-				if (err) {
-					error = true;
-					return res.send(err);
-				}
+	res.status(200).send('Sucess, email was sent.');
+
+	sendSolarMail(
+		{
+			to      : 'adam@webrevived.com',
+			subject : 'New Solar Quote Request',
+			data    : req.body,
+			file    : req.file ? req.file : null
+		},
+		(err) => {
+			if (err) {
+				error = true;
+				return res.send(err);
 			}
-		);
-	});
+		}
+	);
 	// if (err instanceof multer.MulterError) {
 	// 	//A multer error occuers
 	// 	res.status(400).send(err);
@@ -46,7 +45,6 @@ router.post('/solar', (req, res) => {
 	// 	res.status(400).send('Unknown ' + err);
 	// }
 
-	if (!error) res.status(200).send('Sucess, email was sent.');
 	// console.log(path.join(__dirname, req.file.path));
 });
 
