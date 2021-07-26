@@ -24,14 +24,6 @@ router.post('/solar', (req, res) => {
 	const upload = uploadUtils.upload.single('bill_photo');
 
 	upload(req, res, function(err) {
-		if (err instanceof multer.MulterError) {
-			//A multer error occuers
-			res.status(400).send(err);
-		} else if (err) {
-			res.status(400).send('Unknown ' + err);
-			return;
-		}
-
 		sendSolarMail(
 			{
 				to      : 'adam@webrevived.com',
@@ -47,6 +39,12 @@ router.post('/solar', (req, res) => {
 			}
 		);
 	});
+	// if (err instanceof multer.MulterError) {
+	// 	//A multer error occuers
+	// 	res.status(400).send(err);
+	// } else if (err) {
+	// 	res.status(400).send('Unknown ' + err);
+	// }
 
 	if (!error) res.status(200).send('Sucess, email was sent.');
 	// console.log(path.join(__dirname, req.file.path));
