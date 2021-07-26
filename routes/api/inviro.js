@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { sendMail, sendMailWithAttachment, sendSolarMail } = require('../../utils/EmailUtil');
 const uploadUtils = require('../../utils/UploadUtils');
+const multer = require('multer');
 const path = require('path');
 const { resolveNs } = require('dns');
 
@@ -18,9 +19,18 @@ const { resolveNs } = require('dns');
 // 	res.json({ status: 200, message: 'Success' });
 // });
 
-router.post('/solar', uploadUtils.upload.single('bill_photo'), (req, res) => {
+router.post('/solar', (req, res) => {
 	const error = false;
+	const upload = uploadUtils.upload.single('bill_photo');
 
+	upload(req, res, function(err) {
+		if (err instanceof multer.MulterError) {
+			//A multer error occuers
+			res.status(400).send(err);
+		} else if (err) {
+			res.status(400).send('Unknown ' + err);
+		}
+	});
 	sendSolarMail(
 		{
 			to      : 'adam@webrevived.com',
