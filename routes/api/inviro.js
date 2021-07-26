@@ -29,22 +29,25 @@ router.post('/solar', (req, res) => {
 			res.status(400).send(err);
 		} else if (err) {
 			res.status(400).send('Unknown ' + err);
+			return;
 		}
-	});
-	sendSolarMail(
-		{
-			to      : 'adam@webrevived.com',
-			subject : 'New Solar Quote Request',
-			data    : req.body,
-			file    : req.file ? req.file : null
-		},
-		(err) => {
-			if (err) {
-				error = true;
-				return res.send(err);
+
+		sendSolarMail(
+			{
+				to      : 'adam@webrevived.com',
+				subject : 'New Solar Quote Request',
+				data    : req.body,
+				file    : req.file ? req.file : null
+			},
+			(err) => {
+				if (err) {
+					error = true;
+					return res.send(err);
+				}
 			}
-		}
-	);
+		);
+	});
+
 	if (!error) res.status(200).send('Sucess, email was sent.');
 	// console.log(path.join(__dirname, req.file.path));
 });
