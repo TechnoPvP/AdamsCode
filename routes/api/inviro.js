@@ -24,7 +24,7 @@ const request = require('request');
 
 router.post('/verify', (req, res) => {
 	updateClient(req.body);
-	res.redirect('http://invirogen/thankyou.html');
+	res.redirect('http://invirogen.com/thankyou.html');
 });
 
 router.post('/solar', uploadUtils.upload.single('bill_photo'), (req, res) => {
