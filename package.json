@@ -29,7 +29,8 @@
     "nodemailer": "^6.6.2",
     "npm": "^7.19.0",
     "pug": "^3.0.2",
-    "reload": "^3.2.0"
+    "reload": "^3.2.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

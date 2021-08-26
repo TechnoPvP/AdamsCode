@@ -4,25 +4,33 @@ const uploadUtils = require('../../utils/UploadUtils');
 const multer = require('multer');
 const path = require('path');
 const { resolveNs } = require('dns');
+const request = require('request');
 
-// router.post('/solar', (req, res) => {
-// 	if (!req.body) return res.send(400, "Submission can't be empty");
+ function updateClient(postData){
+            var clientServerOptions = {
+                uri: 'https://flow.zoho.com/756047114/flow/webhook/incoming?zapikey=1001.f6d9f8ddd1967e286adfa2277ddfb9a5.29f4609985e48160bba7d1b8755e7b8d&isdebug=true',
+                body: JSON.stringify(postData),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            request(clientServerOptions, function (error, response) {
+                console.log(error, response.body);
+                return;
+            });
+        }
 
-// 	const data = req.body;
-// 	console.log(data);
-// 	let htmlString = '';
 
-// 	for (const key in data) {
-// 		htmlString = htmlString.concat(`<b> ${key} </b>: ${data[key]} <br/> `);
-// 	}
-// 	sendMail('adam@webrevived.com, solar@invirogen.com', 'New Form Submission', htmlString);
-// 	res.json({ status: 200, message: 'Success' });
-// });
+router.post('/verify', (req, res) => {
+	updateClient(req.body);
+	res.redirect('http://invirogen/thankyou.html');
+});
 
 router.post('/solar', uploadUtils.upload.single('bill_photo'), (req, res) => {
 	const error = false;
 
-	res.status(200).send('Sucess, email was sent.');
+	res.status(200).send('Success, email was sent.');
 
 	sendSolarMail(
 		{
