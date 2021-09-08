@@ -53,31 +53,31 @@ db.connect((err) => {
 
 // Setup mongo session store.
 var store = new mongoSession({
-	uri                : process.env.DB_URI,
-	collection         : 'session',
-	autoRemove         : 'interval',
-	autoRemoveInterval : 10
+	uri: process.env.DB_URI,
+	collection: 'session',
+	autoRemove: 'interval',
+	autoRemoveInterval: 10
 });
 // Catch any errors if they occure while creating session store.
-store.on('error', function(error) {
+store.on('error', function (error) {
 	console.log(error);
 });
 
 // Create session data
 const sessionData = {
-	secret            : 'adawdawdadawdwa',
-	resave            : false,
-	saveUninitialized : false,
-	store             : store,
-	cookie            : { maxAge: 3600000 * 2 }
+	secret: 'adawdawdadawdwa',
+	resave: false,
+	saveUninitialized: false,
+	store: store,
+	cookie: { maxAge: 3600000 * 2 }
 };
 app.use(session(sessionData));
 app.use(flash());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	res.set({
-		'Access-Control-Allow-Origin'  : '*',
-		'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin'
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin'
 	});
 	// res.header('Access-Control-Allow-Origin', '*');
 	// res.header(
@@ -98,13 +98,13 @@ app.use('/register', registerRouter);
 app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	next(createError(404));
 	next();
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};

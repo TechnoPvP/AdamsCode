@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const { sendMail, sendMailWithAttachment, sendSolarMail } = require('../../utils/EmailUtil');
 const uploadUtils = require('../../utils/UploadUtils');
-const multer = require('multer');
 const path = require('path');
-const { resolveNs } = require('dns');
 const request = require('request');
 
  function updateClient(postData){
